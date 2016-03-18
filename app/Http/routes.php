@@ -11,15 +11,23 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\Api\v1'], function ($a
     /*
      * Users
      */
-    $api->resource('users', 'UserController');
+    $api->resource('users', 'UserController' ['only' => [
+        'store', 'show'
+    ]]);
 
     /*
-     * Clients
+     * Consumers must be authenticated to access these routes
      */
-    $api->resource('clients', 'ClientController');
+    $api->group(['middleware' => 'api.auth'], function ($api) {
 
         /*
-         * Features
+         * Clients
          */
-        $api->resource('clients.features', 'FeatureController');
+        $api->resource('clients', 'ClientController');
+
+            /*
+             * Features
+             */
+            $api->resource('clients.features', 'FeatureController');
+    });
 });
