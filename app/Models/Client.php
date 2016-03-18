@@ -3,13 +3,28 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 class Client extends Model implements Transformable
 {
-    use TransformableTrait;
+    use SoftDeletes, TransformableTrait;
 
-    protected $fillable = [];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
 
+    /**
+     * Get the features requested by this client.
+     */
+    public function features()
+    {
+        return $this->hasMany('App\Models\Feature');
+    }
 }
