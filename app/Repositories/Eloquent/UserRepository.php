@@ -2,17 +2,16 @@
 
 namespace App\Repositories\Eloquent;
 
-use Prettus\Repository\Eloquent\BaseRepository;
+use App\Repositories\Repository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Repositories\UserRepository as UserRepositoryInterface;
 use App\Models\User;
-use App\Validators\UserValidator;;
 
 /**
- * Class UserRepositoryEloquent
+ * Class UserRepository
  * @package namespace App\Repositories\Eloquent;
  */
-class UserRepositoryEloquent extends BaseRepository implements UserRepository
+class UserRepository extends Repository implements UserRepositoryInterface
 {
     /**
      * Specify Model class name
@@ -23,18 +22,6 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     {
         return User::class;
     }
-
-    /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
-    public function validator()
-    {
-
-        return UserValidator::class;
-    }
-
 
     /**
      * Boot up the repository, pushing criteria

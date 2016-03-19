@@ -2,17 +2,16 @@
 
 namespace App\Repositories\Eloquent;
 
-use Prettus\Repository\Eloquent\BaseRepository;
+use App\Repositories\Repository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Contracts\Repositories\ClientRepository;
+use App\Contracts\Repositories\ClientRepository as ClientRepositoryInterface;
 use App\Models\Client;
-use App\Validators\ClientValidator;;
 
 /**
- * Class ClientRepositoryEloquent
+ * Class ClientRepository
  * @package namespace App\Repositories\Eloquent;
  */
-class ClientRepositoryEloquent extends BaseRepository implements ClientRepository
+class ClientRepository extends Repository implements ClientRepositoryInterface
 {
     /**
      * Specify Model class name
@@ -23,18 +22,6 @@ class ClientRepositoryEloquent extends BaseRepository implements ClientRepositor
     {
         return Client::class;
     }
-
-    /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
-    public function validator()
-    {
-
-        return ClientValidator::class;
-    }
-
 
     /**
      * Boot up the repository, pushing criteria

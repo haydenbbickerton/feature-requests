@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class User extends Model implements Transformable
+class User extends Authenticatable implements Transformable
 {
     use SoftDeletes, TransformableTrait;
 
@@ -17,12 +17,12 @@ class User extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
+        'google_id',
+        'first_name',
+        'last_name',
         'display_name',
         'email',
         'picture',
-        'access_token',
-        'token_expires_in',
-        'token_timestamp',
     ];
 
     /**

@@ -2,17 +2,16 @@
 
 namespace App\Repositories\Eloquent;
 
-use Prettus\Repository\Eloquent\BaseRepository;
+use App\Repositories\Repository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Contracts\Repositories\FeatureRepository;
+use App\Contracts\Repositories\FeatureRepository as FeatureRepositoryInterface;
 use App\Models\Feature;
-use App\Validators\FeatureValidator;;
 
 /**
- * Class FeatureRepositoryEloquent
+ * Class FeatureRepository
  * @package namespace App\Repositories\Eloquent;
  */
-class FeatureRepositoryEloquent extends BaseRepository implements FeatureRepository
+class FeatureRepository extends Repository implements FeatureRepositoryInterface
 {
     /**
      * Specify Model class name
@@ -23,18 +22,6 @@ class FeatureRepositoryEloquent extends BaseRepository implements FeatureReposit
     {
         return Feature::class;
     }
-
-    /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
-    public function validator()
-    {
-
-        return FeatureValidator::class;
-    }
-
 
     /**
      * Boot up the repository, pushing criteria

@@ -1,33 +1,16 @@
 <?php
 
 /*
+ * Auth Routes
+ *
+ * This Laravel installation only serves authentication views.
+ * Users that are logged in will be redirect to the UI via middleware.
+ */
+Route::group(['middleware' => ['web', 'guest']], function () {
+    require_once __DIR__ . "/Routes/auth.php";
+});
+
+/*
  * API Routes
  */
-
-$api = app('Dingo\Api\Routing\Router');
-
-$api->version('v1', ['namespace' => 'App\Http\Controllers\Api\v1'], function ($api) {
-
-    /*
-     * Users
-     */
-    $api->resource('users', 'UserController', ['only' => [
-        'store', 'show'
-    ]]);
-
-    /*
-     * Consumers must be authenticated to access these routes
-     */
-    $api->group(['middleware' => 'api.auth'], function ($api) {
-
-        /*
-         * Clients
-         */
-        $api->resource('clients', 'ClientController');
-
-            /*
-             * Features
-             */
-            $api->resource('clients.features', 'FeatureController');
-    });
-});
+require_once __DIR__ . "/Routes/api.php";

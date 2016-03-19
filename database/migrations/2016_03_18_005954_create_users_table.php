@@ -29,9 +29,6 @@ class CreateUsersTable extends Migration
                 OAuth tokens
              */
             $table->string('access_token')->nullable();
-            $table->string('refresh_token')->nullable();
-            $table->mediumInteger('token_expires_in')->unsigned()->nullable();
-            $table->integer('token_timestamp')->unsigned()->nullable();
 
             $table->rememberToken();
             $table->timestamps();
