@@ -11,8 +11,9 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\Api\v1'], function ($a
     /*
      * Users
      */
+    $api->get('users/me', 'UserController@me');
     $api->resource('users', 'UserController', ['only' => [
-        'store', 'show'
+        'show'
     ]]);
 
     /*

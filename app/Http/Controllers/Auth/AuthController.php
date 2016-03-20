@@ -131,7 +131,7 @@ class AuthController extends Controller
             TODO: There's probably a better way to handle this. Seems janky
             and wouldn't work for any UI that isn't on root/subdomain.
         */
-        $cookie = Cookie::make('jwt-auth', $token, 60, null, $this->baseDomain);
+        $cookie = Cookie::make('jwt-auth', $token, 120, null, $this->baseDomain);
 
         // Redirect to the main UI
         return redirect()
