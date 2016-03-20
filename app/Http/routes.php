@@ -6,7 +6,7 @@
  * This Laravel installation only serves authentication views.
  * Users that are logged in will be redirect to the UI via middleware.
  */
-Route::group(['middleware' => ['web', 'guest']], function () {
+Route::group(['middleware' => ['web']], function () {
     require_once __DIR__ . "/Routes/auth.php";
 });
 

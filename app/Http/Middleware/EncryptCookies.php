@@ -12,6 +12,6 @@ class EncryptCookies extends BaseEncrypter
      * @var array
      */
     protected $except = [
-        //
+        'jwt-auth' // So we can read it from javascript
     ];
 }

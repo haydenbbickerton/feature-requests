@@ -7,9 +7,21 @@ use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\UserRepository;
 use Socialite;
 use Auth;
+use JWTAuth;
+use Cookie;
 
 class AuthController extends Controller
 {
+
+    /**
+     * Allowed email domain
+     */
+    protected $allowedDomain;
+
+    /*
+     * The base domain
+     */
+    protected $baseDomain;
 
     /**
      * Create a new authentication controller instance.
@@ -19,16 +31,41 @@ class AuthController extends Controller
     public function __construct(UserRepository $users)
     {
         $this->users = $users;
+        $this->allowedDomain = env('ALLOWED_EMAIL_DOMAIN', '');
+        $this->baseDomain = parse_url(env('APP_URL'))['host'];
+
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
      * Show the application login form.
      *
+     * @return \Illuminate\Http\Response
      */
     public function login()
     {
         return view('auth.login');
     }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        // Log out and remove the jwt-cookie
+        Auth::logout();
+        $cookie = Cookie::forget('jwt-auth', null, $this->baseDomain);
+
+        // Redirect to login
+        return redirect()
+                ->route('auth.login')
+                ->withCookie($cookie)
+                ->with('message', 'You have logged out successfully')
+                ->with('alert-class', 'alert-info');
+    }
+
 
     /**
      * Redirect to Google's authentication page
@@ -45,10 +82,32 @@ class AuthController extends Controller
      */
     public function redirect(Request $request)
     {
-        $gUser = Socialite::driver('google')->user();
+        // https://laracasts.com/discuss/channels/laravel/socialite-invalidstateexception-in-abstractproviderphp/replies/130641
+        $state = $request->get('state');
+        $request->session()->put('state', $state);
 
-        // Check the email domain
-        $this->checkEmail($gUser->email, env('ALLOWED_EMAIL_DOMAIN'));
+        try {
+            $gUser = Socialite::driver('google')->user();
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            // Make them authenticate again
+            return redirect()->route('auth.google');
+        }
+
+        /*
+          Freak out if they aren't signing in with
+          an email from the approved domain.
+         */
+        if (!$this->allowedEmail($gUser->email)) {
+
+            // variable interpolation only happens in double quotes. Looks ugly though.
+            $errorMsg = "Your email is not a {$this->allowedDomain} address. Only employees may access this website.";
+
+            // Redirect to login with error
+            return redirect()
+                    ->route('auth.login')
+                    ->with('message', $errorMsg)
+                    ->with('alert-class', 'alert-danger');
+        }
 
         // Get or create our user
         $user = $this->users->firstOrCreate([
@@ -57,32 +116,36 @@ class AuthController extends Controller
             'email' => $gUser->email,
             'picture' => $gUser->avatar,
             'first_name' => $gUser->user['name']['givenName'],
-            'last_name' => $gUser->user['name']['familyName'],
+            'last_name' => $gUser->user['name']['familyName']
         ]);
-
-        // The access token isn't fillable, save it separately
-        $this->users->update(['access_token' => $gUser->token], $user->id);
+        $this->users->update(['access_token' => $gUser->token], $user->id); // token isn't fillable
 
         // Log them in
         Auth::login($user, true);
 
+        // Generate our JWT
+        $token = JWTAuth::fromUser($user);
+
+        /*
+            Making cookie on base domain so the subdomain picks it up.
+            TODO: There's probably a better way to handle this. Seems janky
+            and wouldn't work for any UI that isn't on root/subdomain.
+        */
+        $cookie = Cookie::make('jwt-auth', $token, 60, null, $this->baseDomain);
+
         // Redirect to the main UI
-        return redirect(env('APP_UI_URL'));
+        return redirect()
+                ->to(env('APP_UI_URL'))
+                ->withCookie($cookie);
     }
 
-    private function checkEmail($email, $allowedEmailDomain)
+    /**
+     * Check if the email belongs to our allowed email domain.
+     *
+     * @return bool
+     */
+    private function allowedEmail($email)
     {
-        /*
-          Freak out if they aren't signing in with
-          an email from approved domain.
-         */
-        if (explode('@', $email)[1] !== $allowedEmailDomain) {
-
-            $errorMsg = 'Your email is not a ' . $allowedEmailDomain .
-                        ' address. Only employees may access this website.';
-
-            $request->session()->flash('error', $errorMsg);
-            return redirect()->route('auth.login');
-        }
+        return ends_with(strtolower($email), strtolower($this->allowedDomain));
     }
 }

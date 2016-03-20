@@ -7,11 +7,10 @@
 @section('content')
 <div class="container">
 
-  @if(Session::has('error'))
-    <div class="alert alert-danger alert-dismissible">
+  @if(Session::has('message'))
+    <div class="alert alert-dismissible {{ Session::get('alert-class', 'alert-info') }}">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-      <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-      {{ Session::get('error') }}      
+      {{ Session::get('message') }}     
     </div>
   @endif
 
