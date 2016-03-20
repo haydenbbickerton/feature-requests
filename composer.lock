@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "308173e6c38beecd53db96ab465617ea",
-    "content-hash": "bf8adb27903451f177493542e3392580",
+    "hash": "266dc9f20da687d63042bbf489cb3a2b",
+    "content-hash": "7cd767e886cae9e8b79a497cba5de7b5",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -103,16 +103,16 @@
         },
         {
             "name": "dingo/api",
-            "version": "dev-master",
+            "version": "v1.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dingo/api.git",
-                "reference": "de7bbb4d64777b6cdb7800eab178db867165c3e0"
+                "reference": "7fa939c8edc0fb775c495ae10f220a8cf66d399c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dingo/api/zipball/70d27464541d247a30fefb28a01800298ce409da",
-                "reference": "de7bbb4d64777b6cdb7800eab178db867165c3e0",
+                "url": "https://api.github.com/repos/dingo/api/zipball/7fa939c8edc0fb775c495ae10f220a8cf66d399c",
+                "reference": "7fa939c8edc0fb775c495ae10f220a8cf66d399c",
                 "shasum": ""
             },
             "require": {
@@ -175,7 +175,7 @@
                 "laravel",
                 "restful"
             ],
-            "time": "2016-03-17 13:38:24"
+            "time": "2016-03-17 04:34:45"
         },
         {
             "name": "dingo/blueprint",
@@ -1525,16 +1525,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.2.2",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "b3313b618f4edd76523572531d5d7e22fe747430"
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b3313b618f4edd76523572531d5d7e22fe747430",
-                "reference": "b3313b618f4edd76523572531d5d7e22fe747430",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
                 "shasum": ""
             },
             "require": {
@@ -1569,7 +1569,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-11 19:54:08"
+            "time": "2016-03-18 20:34:03"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2885,62 +2885,6 @@
     ],
     "packages-dev": [
         {
-            "name": "adamwathan/eloquent-oauth",
-            "version": "v8.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adamwathan/eloquent-oauth.git",
-                "reference": "2c74b7b1c36566e6ba76315582b17285311e53ad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/eloquent-oauth/zipball/2c74b7b1c36566e6ba76315582b17285311e53ad",
-                "reference": "2c74b7b1c36566e6ba76315582b17285311e53ad",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/auth": "4.*|5.*",
-                "illuminate/database": "4.*|5.*",
-                "illuminate/http": "4.*|5.*",
-                "illuminate/routing": "4.*|5.*",
-                "illuminate/session": "4.*|5.*",
-                "illuminate/support": "4.*|5.*",
-                "php": ">=5.5.0",
-                "socialnorm/facebook": "^0.2",
-                "socialnorm/github": "^0.2",
-                "socialnorm/google": "^0.2",
-                "socialnorm/instagram": "^0.2",
-                "socialnorm/linkedin": "^0.2",
-                "socialnorm/socialnorm": "^0.2",
-                "socialnorm/soundcloud": "^0.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "AdamWathan\\EloquentOAuth\\": "src/"
-                },
-                "classmap": [
-                    "tests/FunctionalTestCase.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                }
-            ],
-            "description": "Stupid simple OAuth authentication with Laravel and Eloquent",
-            "time": "2015-10-26 14:05:26"
-        },
-        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -3958,299 +3902,6 @@
             "time": "2015-06-21 13:59:46"
         },
         {
-            "name": "socialnorm/facebook",
-            "version": "v0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adamwathan/socialnorm-facebook.git",
-                "reference": "2a3ccaea5905ca341b4916fc2283aaf7d9f4960b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/socialnorm-facebook/zipball/2a3ccaea5905ca341b4916fc2283aaf7d9f4960b",
-                "reference": "2a3ccaea5905ca341b4916fc2283aaf7d9f4960b",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0",
-                "socialnorm/socialnorm": "^0.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.8",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialNorm\\Facebook\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                }
-            ],
-            "description": "Facebook provider for SocialNorm",
-            "time": "2015-09-13 00:11:08"
-        },
-        {
-            "name": "socialnorm/github",
-            "version": "v0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adamwathan/socialnorm-github.git",
-                "reference": "e815f3ab5467790fcb5a833946cee0b17a268068"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/socialnorm-github/zipball/e815f3ab5467790fcb5a833946cee0b17a268068",
-                "reference": "e815f3ab5467790fcb5a833946cee0b17a268068",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0",
-                "socialnorm/socialnorm": "^0.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.8",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialNorm\\GitHub\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                }
-            ],
-            "description": "GitHub provider for SocialNorm",
-            "time": "2015-09-13 00:10:40"
-        },
-        {
-            "name": "socialnorm/google",
-            "version": "v0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adamwathan/socialnorm-google.git",
-                "reference": "d349ba58593011cd8d0ae9483bcd0921cd8a5637"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/socialnorm-google/zipball/d349ba58593011cd8d0ae9483bcd0921cd8a5637",
-                "reference": "d349ba58593011cd8d0ae9483bcd0921cd8a5637",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0",
-                "socialnorm/socialnorm": "^0.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.8",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialNorm\\Google\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                }
-            ],
-            "description": "Google provider for SocialNorm",
-            "time": "2015-09-13 00:12:29"
-        },
-        {
-            "name": "socialnorm/instagram",
-            "version": "v0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adamwathan/socialnorm-instagram.git",
-                "reference": "a7799870525812959e7a1518fd5b2322d16650aa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/socialnorm-instagram/zipball/a7799870525812959e7a1518fd5b2322d16650aa",
-                "reference": "a7799870525812959e7a1518fd5b2322d16650aa",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0",
-                "socialnorm/socialnorm": "^0.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.8",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialNorm\\Instagram\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                }
-            ],
-            "description": "Instagram provider for SocialNorm",
-            "time": "2015-09-13 00:12:12"
-        },
-        {
-            "name": "socialnorm/linkedin",
-            "version": "v0.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adamwathan/socialnorm-linkedin.git",
-                "reference": "1601b5b3137491e22f89a1f11c312b937887f41d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/socialnorm-linkedin/zipball/1601b5b3137491e22f89a1f11c312b937887f41d",
-                "reference": "1601b5b3137491e22f89a1f11c312b937887f41d",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0",
-                "socialnorm/socialnorm": "^0.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.8",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialNorm\\LinkedIn\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                }
-            ],
-            "description": "LinkedIn provider for SocialNorm",
-            "time": "2015-09-13 00:10:05"
-        },
-        {
-            "name": "socialnorm/socialnorm",
-            "version": "v0.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adamwathan/socialnorm.git",
-                "reference": "c99860a8ab338481c8db30d6d080cd1f4b1352cd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/socialnorm/zipball/c99860a8ab338481c8db30d6d080cd1f4b1352cd",
-                "reference": "c99860a8ab338481c8db30d6d080cd1f4b1352cd",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.8",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialNorm\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                }
-            ],
-            "description": "Normalize user details between various OAuth providers",
-            "time": "2015-10-26 13:41:55"
-        },
-        {
-            "name": "socialnorm/soundcloud",
-            "version": "v0.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adamwathan/socialnorm-soundcloud.git",
-                "reference": "a607526512ea960e880b70ab432c5a4f1d2e420a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adamwathan/socialnorm-soundcloud/zipball/a607526512ea960e880b70ab432c5a4f1d2e420a",
-                "reference": "a607526512ea960e880b70ab432c5a4f1d2e420a",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5.0",
-                "socialnorm/socialnorm": "^0.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.8",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialNorm\\SoundCloud\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                }
-            ],
-            "description": "SoundCloud provider for SocialNorm",
-            "time": "2015-11-18 20:18:43"
-        },
-        {
             "name": "symfony/css-selector",
             "version": "v3.0.3",
             "source": {
@@ -4412,7 +4063,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "dingo/api": 20
+        "dingo/api": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,
