@@ -6,7 +6,7 @@
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['namespace' => 'App\Http\Controllers\Api\v1'], function ($api) {
+$api->version('v1', ['middleware' => ['api.auth'], 'namespace' => 'App\Http\Controllers\Api\v1'], function ($api) {
 
     /*
      * Users
@@ -17,18 +17,12 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\Api\v1'], function ($a
     ]]);
 
     /*
-     * Consumers must be authenticated to access these routes
+     * Clients
      */
-    $api->group(['middleware' => 'api.auth'], function ($api) {
+    $api->resource('clients', 'ClientController');
 
         /*
-         * Clients
+         * Features
          */
-        $api->resource('clients', 'ClientController');
-
-            /*
-             * Features
-             */
-            $api->resource('clients.features', 'FeatureController');
-    });
+        $api->resource('clients.features', 'FeatureController');
 });
