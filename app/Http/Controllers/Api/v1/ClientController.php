@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Contracts\Repositories\ClientRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Transformers\ClientTransformer;
+use Dingo\Api\Routing\Helpers;
 
 /**
  * Client resource representation.
@@ -13,6 +16,14 @@ use App\Http\Requests;
  */
 class ClientController extends Controller
 {
+
+
+    use Helpers;
+
+    public function __construct(ClientRepository $clients)
+    {
+        $this->clients = $clients;
+    }
 
     /**
      * Show all clients
@@ -23,7 +34,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        return $this->response->collection($this->clients->all(), new ClientTransformer);
     }
 
     /**
@@ -47,7 +58,9 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = $this->clients->find((int) $id);
+        
+        return $this->response->item($client, new ClientTransformer);
     }
 
     /**
