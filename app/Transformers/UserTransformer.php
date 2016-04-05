@@ -17,6 +17,8 @@ class UserTransformer extends Fractal\TransformerAbstract
             'display_name' => $user->display_name,
             'email'        => $user->email,
             'picture'      => $user->picture,
+            'created_at'   => $user->created_at,
+            'updated_at'   => $user->updated_at,
         ];
     }
 }

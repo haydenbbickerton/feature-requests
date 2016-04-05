@@ -22,8 +22,10 @@ class ClientTransformer extends Fractal\TransformerAbstract
     public function transform(Client $client)
     {
         return [
-            'id'       => $client->id,
-            'name'     => $client->name,
+            'id'          => $client->id,
+            'name'        => $client->name,
+            'created_at'  => $client->created_at,
+            'updated_at'  => $client->updated_at,
         ];
     }
 
