@@ -33,7 +33,6 @@ $factory->define(App\Models\Feature::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence(mt_rand(4, 15)),
         'description' => $faker->realText(mt_rand(25, 500)),
-        'priority' => mt_rand(1, 50),
         'target_date' => $dt->addMonths(mt_rand(1, 24))->timestamp, // Sometime in next 2 years
         'url' => $faker->url,
         'areas' => $faker->randomElements(['Policies', 'Billing', 'Claims', 'Reports'], mt_rand(1, 2)), // Pick 1 or 2 from array

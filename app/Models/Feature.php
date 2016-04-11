@@ -19,6 +19,7 @@ class Feature extends Model implements Transformable
     protected $fillable = [
         'title',
         'description',
+        'client_id',
         'priority',
         'target_date',
         'url',

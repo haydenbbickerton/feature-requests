@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\ClientRepository;
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests\ClientStoreRequest;
 use App\Transformers\ClientTransformer;
 use Dingo\Api\Routing\Helpers;
 
@@ -16,7 +16,6 @@ use Dingo\Api\Routing\Helpers;
  */
 class ClientController extends Controller
 {
-
 
     use Helpers;
 
@@ -44,9 +43,22 @@ class ClientController extends Controller
      *
      * @Post("/")
      */
-    public function store(Request $request)
+    public function store(ClientStoreRequest $request)
     {
-        //
+        $data = collect($request->all());
+
+        try {
+            $clientInfo = [
+                'name' => $data['name']
+            ];
+
+            $client = $this->clients->create($clientInfo);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json(['error' => 'Something went wrong. Sorry about that, try again later.'], 500);
+        }
+
+        return $this->response->item($client, new ClientTransformer);
+
     }
 
     /**

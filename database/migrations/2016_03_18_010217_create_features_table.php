@@ -17,16 +17,13 @@ class CreateFeaturesTable extends Migration
             $table->integer('client_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->nullable()->index();
             $table->string('title');
-            $table->text('description');
-            $table->smallInteger('priority')->unsigned(); // Hoping a client doesn't make 65,536 feature requests
-            $table->timestamp('target_date');
-            $table->string('url');
+            $table->text('description')->nullable();
+            $table->timestamp('target_date')->nullable();
+            $table->string('url')->nullable();
             $table->text('areas');
 
             $table->timestamps();
             $table->softDeletes();
-
-            $table->unique(['client_id', 'priority']); // Enforce priority ranking in DB
 
             $table->foreign('client_id')
                   ->references('id')->on('clients')

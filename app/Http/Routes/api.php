@@ -21,8 +21,8 @@ $api->version('v1', ['middleware' => ['api.auth'], 'namespace' => 'App\Http\Cont
      */
     $api->resource('clients', 'ClientController');
 
-        /*
-         * Features
-         */
-        $api->resource('clients.features', 'FeatureController');
+    /*
+     * Features
+     */
+    $api->resource('features', 'FeatureController');
 });

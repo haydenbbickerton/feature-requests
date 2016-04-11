@@ -21,6 +21,15 @@ class Client extends Model implements Transformable
     ];
 
     /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'feature_priorities' => 'object',
+    ];
+
+    /**
      * Get the features requested by this client.
      */
     public function features()
