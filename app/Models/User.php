@@ -26,6 +26,16 @@ class User extends Authenticatable implements Transformable
     ];
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
+
+    /**
      * Get the features created by this user (on behalf of clients).
      */
     public function features()

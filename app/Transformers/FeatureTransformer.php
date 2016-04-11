@@ -18,9 +18,8 @@ class FeatureTransformer extends Fractal\TransformerAbstract
             'description' => $feature->description,
             'url'         => $feature->url,
             'areas'       => $feature->areas,
-            'created_at'  => $feature->created_at,
-            'updated_at'  => $feature->updated_at,
+            'created_at'  => $feature->created_at->toIso8601String(),
+            'updated_at'  => $feature->updated_at->toIso8601String(),
         ];
     }
-
 }

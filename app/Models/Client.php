@@ -21,6 +21,16 @@ class Client extends Model implements Transformable
     ];
 
     /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
+
+    /**
      * The attributes that should be casted to native types.
      *
      * @var array

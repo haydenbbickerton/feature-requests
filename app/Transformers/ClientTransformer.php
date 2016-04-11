@@ -24,8 +24,8 @@ class ClientTransformer extends Fractal\TransformerAbstract
         return [
             'id'          => $client->id,
             'name'        => $client->name,
-            'created_at'  => $client->created_at,
-            'updated_at'  => $client->updated_at,
+            'created_at'  => $client->created_at->toIso8601String(),
+            'updated_at'  => $client->updated_at->toIso8601String(),
         ];
     }
 
