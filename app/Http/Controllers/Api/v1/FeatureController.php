@@ -9,6 +9,7 @@ use App\Contracts\Repositories\FeatureRepository;
 use App\Http\Requests\FeatureStoreRequest;
 use App\Transformers\FeatureTransformer;
 use Dingo\Api\Routing\Helpers;
+use Carbon\Carbon;
 
 /**
  * Feature resource representation.
@@ -53,7 +54,9 @@ class FeatureController extends Controller
                 'title' => $data['title'],
                 'description' => $data['description'],
                 'client_id' => $data['client'],
+                'user_id' => app('Dingo\Api\Auth\Auth')->user()->id,
                 'url' => $data['url'],
+                'target_date' => Carbon::parse($data['target_date'])->toDateTimeString(),
                 'areas' => $data['areas']
             ];
             $feature = $this->features->create($featureInfo);

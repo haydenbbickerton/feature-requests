@@ -12,12 +12,12 @@ class Client extends Model implements Transformable
     use SoftDeletes, TransformableTrait;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
+    protected $guarded = [
+        'id',
     ];
 
     /**

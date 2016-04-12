@@ -9,6 +9,7 @@ class FeatureStoreRequest extends Request
     private $featureRules = [
         'title' => 'required|max:250|min:4',
         'description' => 'max:2500',
+        'target_date' => 'required|date',
         'url' =>    'max:250',
         'areas' => 'array'
     ];

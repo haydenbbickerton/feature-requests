@@ -19,7 +19,7 @@ class FeatureTransformer extends Fractal\TransformerAbstract
             'description' => $feature->description,
             'url'         => $feature->url,
             'areas'       => $feature->areas,
-            'target_date' => $feature->target_date->toIso8601String(),
+            'target_date' => (bool) $feature->target_date ? $feature->target_date->toIso8601String() : null,
             'created_at'  => $feature->created_at->toIso8601String(),
             'updated_at'  => $feature->updated_at->toIso8601String(),
         ];

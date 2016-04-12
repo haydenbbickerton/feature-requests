@@ -12,17 +12,13 @@ class User extends Authenticatable implements Transformable
     use SoftDeletes, TransformableTrait;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'google_id',
-        'first_name',
-        'last_name',
-        'display_name',
-        'email',
-        'picture',
+    protected $guarded = [
+        'id',
+        'access_token',
     ];
 
     /**

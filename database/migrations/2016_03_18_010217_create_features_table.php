@@ -21,7 +21,7 @@ class CreateFeaturesTable extends Migration
             $table->dateTime('target_date')->nullable()->default(null);
             $table->string('url')->nullable();
             $table->text('areas');
-            $table->boolean('done');
+            $table->boolean('done')->default(false)->index();
 
             $table->timestamps();
             $table->softDeletes();

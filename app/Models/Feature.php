@@ -12,18 +12,12 @@ class Feature extends Model implements Transformable
     use SoftDeletes, TransformableTrait;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'title',
-        'description',
-        'client_id',
-        'done',
-        'target_date',
-        'url',
-        'areas',
+    protected $guarded = [
+        'id'
     ];
 
     /**
