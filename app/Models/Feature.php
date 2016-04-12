@@ -20,7 +20,7 @@ class Feature extends Model implements Transformable
         'title',
         'description',
         'client_id',
-        'priority',
+        'done',
         'target_date',
         'url',
         'areas',
@@ -44,6 +44,7 @@ class Feature extends Model implements Transformable
      */
     protected $casts = [
         'areas' => 'array',
+        'done'  => 'boolean',
     ];
 
     /**

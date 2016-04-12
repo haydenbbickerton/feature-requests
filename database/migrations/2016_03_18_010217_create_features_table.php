@@ -18,9 +18,10 @@ class CreateFeaturesTable extends Migration
             $table->integer('user_id')->unsigned()->nullable()->index();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->timestamp('target_date')->nullable();
+            $table->dateTime('target_date')->nullable()->default(null);
             $table->string('url')->nullable();
             $table->text('areas');
+            $table->boolean('done');
 
             $table->timestamps();
             $table->softDeletes();
