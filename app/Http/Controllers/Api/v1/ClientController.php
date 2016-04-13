@@ -57,7 +57,7 @@ class ClientController extends Controller
             return response()->json(['error' => 'Something went wrong. Sorry about that, try again later.'], 500);
         }
 
-        return $this->response->item($client, new ClientTransformer);
+        return $this->response->created();
 
     }
 
