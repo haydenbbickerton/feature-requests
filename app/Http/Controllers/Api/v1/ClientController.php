@@ -84,7 +84,22 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = $this->clients->find((int) $id);
+
+        $data = collect($request->all());
+
+        try {
+            $clientInfo = [
+                'name' => $data['name'],
+                'feature_priorities' => $data['feature_priorities']
+            ];
+
+            $client = $this->clients->update($clientInfo, $client->id);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json(['error' => 'Something went wrong. Sorry about that, try again later.'], 500);
+        }
+
+        return $this->response->noContent()->setStatusCode(200);
     }
 
     /**

@@ -46,4 +46,12 @@ class Client extends Model implements Transformable
     {
         return $this->hasMany('App\Models\Feature');
     }
+
+    /**
+     * Return an array full of this clients feature request ids.
+     */
+    public function getFeatureIdsAttribute()
+    {
+        return $this->features->lists('id');
+    }
 }
