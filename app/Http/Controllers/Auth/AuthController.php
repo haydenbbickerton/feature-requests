@@ -12,12 +12,6 @@ use Cookie;
 
 class AuthController extends Controller
 {
-
-    /**
-     * Allowed email domain
-     */
-    protected $allowedDomain;
-
     /*
      * The base domain
      */
@@ -31,7 +25,6 @@ class AuthController extends Controller
     public function __construct(UserRepository $users)
     {
         $this->users = $users;
-        $this->allowedDomain = env('ALLOWED_EMAIL_DOMAIN', '');
         $this->baseDomain = parse_url(env('APP_URL'))['host'];
 
         $this->middleware('guest', ['except' => 'logout']);
@@ -93,22 +86,6 @@ class AuthController extends Controller
             return redirect()->route('auth.google');
         }
 
-        /*
-          Freak out if they aren't signing in with
-          an email from the approved domain.
-         */
-        if (!$this->allowedEmail($gUser->email)) {
-
-            // variable interpolation only happens in double quotes. Looks ugly though.
-            $errorMsg = "Your email is not a {$this->allowedDomain} address. Only employees may access this website.";
-
-            // Redirect to login with error
-            return redirect()
-                    ->route('auth.login')
-                    ->with('message', $errorMsg)
-                    ->with('alert-class', 'alert-danger');
-        }
-
         // Get or create our user
         $user = $this->users->firstOrCreate([
             'google_id' => $gUser->id,
@@ -137,15 +114,5 @@ class AuthController extends Controller
         return redirect()
                 ->to(env('APP_UI_URL'))
                 ->withCookie($cookie);
-    }
-
-    /**
-     * Check if the email belongs to our allowed email domain.
-     *
-     * @return bool
-     */
-    private function allowedEmail($email)
-    {
-        return ends_with(strtolower($email), strtolower($this->allowedDomain));
     }
 }
