@@ -1,27 +1,37 @@
-# Laravel PHP Framework
+# Feature Requests API (WIP)
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Feature Requests is a API/SPA combo demonstrating some ways to piece together various pieces of the [Laravel](https://laravel.com/) and [Vue.js](http://vuejs.org/) ecosystems. A fictional app for helping a company create/view clients, creating feature requests from those clients, and prioritizing those feature requests.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+This is the backend, the API. You can find the frontend repo - [feature-requests-app](https://github.com/haydenbbickerton/feature-requests-app)
+#### [DEMO](https://feature-requests.haydenbickerton.com) - (The data is wiped every 24 hours)
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+### Backend Tools
+* [Laravel](https://github.com/laravel/laravel) - PHP Framework
+* [Dingo API](https://github.com/dingo/api) - RESTful API for storing/retrieving data.
+* [Fractal](https://github.com/thephpleague/fractal) - Transformation layer for API output
+* [l5-repository](https://github.com/andersao/l5-repository) - Repository pattern to abstract the database layer
+* [jwt-auth](https://github.com/tymondesigns/jwt-auth) - JSON Web Token Authentication
+* [Socialite](https://github.com/laravel/socialite) - OAuth authentication with Google
+* [AdminLTE](https://github.com/almasaeed2010/AdminLTE) - Login page (all other UI is in the SPA)
+* More
 
-## Official Documentation
+### Installation
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+```sh
+$ git clone [git-repo-url] feature-requests-api
+$ cd feature-requests-api
+$ composer install
+$ php artisan migrate
+```
 
-## Contributing
+#### Configuration
+Duplicate `.env.example` to `.env` and fill it out with the right info. You can get your Google Client ID/Secret from the [Google Developer Console](https://console.developers.google.com). You'll need them for the oAuth signin.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Your webserver needs to allow the `authorization` header.
 
-## Security Vulnerabilities
+License
+----
+[MIT](opensource.org/licenses/MIT)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+###Contributing
+Pull requests are welcome :)
