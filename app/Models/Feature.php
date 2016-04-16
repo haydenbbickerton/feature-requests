@@ -17,7 +17,7 @@ class Feature extends Model implements Transformable
      * @var array
      */
     protected $guarded = [
-        'id'
+        'id',
     ];
 
     /**
@@ -37,8 +37,10 @@ class Feature extends Model implements Transformable
      * @var array
      */
     protected $casts = [
-        'areas' => 'array',
-        'done'  => 'boolean',
+        'client_id' => 'integer',
+        'user_id'   => 'integer',
+        'areas'     => 'array',
+        'done'      => 'boolean',
     ];
 
     /**
